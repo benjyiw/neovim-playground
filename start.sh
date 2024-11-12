@@ -1,7 +1,10 @@
 #!/bin/bash
 
 docker build . -t neovim-playground:latest
-docker run -ti neovim-playground:latest
+docker run \
+    --volume ./config:/root/.config/nvim \
+    --volume .:/root/playground \
+    --workdir /root/playground \
+    --tty --interactive=true \
+    neovim-playground:latest
 
-# TODO add some mounts to the local directory so that i can test out neovim
-# properly and use it to edit the config

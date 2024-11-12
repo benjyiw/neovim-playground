@@ -11,6 +11,7 @@ RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linu
     rm -rf /opt/nvim && \
     tar -C /opt -xzf nvim-linux64.tar.gz
 
-
-RUN echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+RUN echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc && \
+    echo 'alias vim="nvim"' >> ~/.bashrc && \
+    echo 'alias vi="nvim"' >> ~/.bashrc
 
