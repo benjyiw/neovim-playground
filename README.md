@@ -21,6 +21,11 @@ here is a nice clean isolated place to configure all my things.
 - [ ] nerd fonts?
 
 
+## plugin notes
+
+- don't need tpope commentary any more? that's just built in now?
+
+
 ## decision making
 
 - [ ] is neo-tree better ?

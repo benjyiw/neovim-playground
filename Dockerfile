@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     sudo
 
+# install go
+COPY --from=golang:1.23-alpine /usr/local/go/ /usr/local/go/
+
 # setup a user with a matching user id to prevent weird permission issues.
 RUN addgroup --gid ${GROUP_ID} usergroup && \
     adduser --disabled-password --gecos "" --uid ${USER_ID} --gid ${GROUP_ID} user
@@ -28,6 +31,7 @@ RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linu
     tar -C /opt -xzf nvim-linux64.tar.gz
 
 RUN echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ${BASHRC} && \
+    echo 'export PATH="$PATH:/usr/local/go/bin"' >> ${BASHRC} && \
     echo 'alias vim="nvim"' >> ${BASHRC} && \
     echo 'alias vi="nvim"' >> ${BASHRC} && \
     echo 'alias nv="nvim"' >> ${BASHRC}
