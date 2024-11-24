@@ -1,3 +1,7 @@
+-- TODO i think i want to just go back to the regular tmux-navigator.
+-- switched to this initially because i was running into trouble getting it
+-- to work in the playground, but that seems to just be a tmux/docker
+-- problem, not a nvim plugin problem
 return {
   -- rewrite of vim-tmux-navigator, but in lua
   "alexghergh/nvim-tmux-navigation",
