@@ -1,0 +1,2 @@
+# just ignore the lazy lock file for now so that things are auto updated
+config/lazy-lock.json
