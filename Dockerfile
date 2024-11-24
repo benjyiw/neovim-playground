@@ -22,8 +22,10 @@ RUN apt-get update && apt-get install -y \
 COPY --from=golang:1.23-alpine /usr/local/go/ /usr/local/go/
 
 # setup a user with a matching user id to prevent weird permission issues.
-RUN addgroup --gid ${GROUP_ID} usergroup && \
-    adduser --disabled-password --gecos "" --uid ${USER_ID} --gid ${GROUP_ID} user
+RUN if [[ "$USER_ID" != "1000" ]]; then \
+    addgroup --gid ${GROUP_ID} usergroup && \
+    adduser --disabled-password --gecos "" --uid ${USER_ID} --gid ${GROUP_ID} user; \
+    fi
 
 # install neovim
 RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
